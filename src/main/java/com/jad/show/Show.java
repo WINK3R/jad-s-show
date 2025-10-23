@@ -1,6 +1,6 @@
 package com.jad.show;
 
-public abstract class Show implements IShow{
+public abstract class Show implements IShow {
     private final String name;
     private final String description;
     private final ShowType showType;
@@ -24,5 +24,10 @@ public abstract class Show implements IShow{
     @Override
     public ShowType getShowType() {
         return this.showType;
+    }
+
+    @Override
+    public void accept(final IShowVisitor visitor) {
+        visitor.visitDefault(this);
     }
 }

@@ -9,7 +9,7 @@ public class TheaterShow extends Show {
     private final String director;
     private final ArrayList<String> actors = new ArrayList<>();
 
-    public TheaterShow(final String name, final String description, final String director, final String... actors) {
+    TheaterShow(final String name, final String description, final String director, final String... actors) {
         super(name, description, ShowType.THEATER);
         this.director = director;
         this.actors.addAll(Arrays.asList(actors));
@@ -21,5 +21,10 @@ public class TheaterShow extends Show {
 
     public List<String> getActors() {
         return Collections.unmodifiableList(this.actors);
+    }
+
+    @Override
+    public void accept(final IShowVisitor visitor) {
+        visitor.visitTheater(this);
     }
 }
